@@ -143,6 +143,22 @@ def reporte_admin():
     print("\033[93mNacionales:\033[0m", nacionales)
     print("\033[93mInternacionales:\033[0m", internacionales)
 
+    fecha = input("Ingrese la fecha para consultar recaudacion (dd/mm/aaaa): ")
+    total_fecha = sum(r['total'] for r in reservas.values() if r['fecha_viaje'] == fecha)
+    print(f"Total recaudado en {fecha}: \033[96m${total_fecha:,.2f}\033[0m")
+    
+"""1. reservas.values():
+Este extrae todos los valores (que son las reservas) del diccionario reservas.
+2. for r in reservas.values():
+Este bucle itera sobre cada reserva.
+3. if r['fecha_viaje'] == fecha:
+Esta condición filtra las reservas, solo incluyendo aquellas donde la fecha_viaje es igual a la fecha proporcionada.
+4. r['total']:
+Si la condición anterior es verdadera, se extrae el valor de total de esa reserva.
+5. sum(...):
+Finalmente, sum suma todos los valores de total de las reservas que pasaron la condición."""
+
+
 # Menu principal
 while True:
     print("\n\033[34m========= MENU PRINCIPAL =========\033[0m")
